@@ -6,15 +6,19 @@ import {
 } from "react-icons/bs";
 
 import { useThemeDispatch, useThemeSelector } from "../hooks/useTheme";
+import { useCartSelector } from "../hooks/useCart";
 
 import { switchTheme } from "../redux/slices/theme-slice";
+import { getCartQty } from "../redux/slices/cart-slice";
 
 import Navbar from "./Navbar";
 
 function Header() {
   const theme = useThemeSelector((state) => state.theme.value);
-
   const dispatch = useThemeDispatch();
+
+  const cart = useCartSelector((state) => state.cart.items);
+  const cartQty = getCartQty(cart);
 
   function handleSwitchTheme() {
     dispatch(switchTheme());
@@ -31,16 +35,21 @@ function Header() {
           className="p-2.5 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full"
         >
           {theme === "dark" ? (
-            <BsSunFill />
+            <BsSunFill size={20} />
           ) : (
-            <BsMoonFill />
+            <BsMoonFill size={20} />
           )}
         </button>
         <button className="p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full">
-          <BsPersonFill />
+          <BsPersonFill size={20} />
         </button>
-        <button className="p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full">
-          <BsCartFill />
+        <button className="relative p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full flex items-center">
+          <BsCartFill size={20} />
+          {cartQty > 0 && (
+            <span className="absolute bottom-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 ms-1 flex items-center justify-center text-xs">
+              {cartQty}
+            </span>
+          )}
         </button>
         <input
           dir="rtl"

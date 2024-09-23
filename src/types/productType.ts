@@ -12,3 +12,8 @@ export type Product = {
   image: string;
   rating: Rating;
 };
+
+export type CartItem = {
+  id: number;
+  qty: number;
+};
