@@ -17,9 +17,9 @@ function Layout({ children }: LayoutProps) {
   }
 
   return (
-    <div dir="rtl" className="min-h-screen grid grid-rows-12">
+    <div dir="rtl">
       <Header />
-      <main className="container mx-auto my-6 px-4 row-span-10">
+      <main className="min-h-screen container mx-auto my-6 px-4">
         {children}
       </main>
       <Footer />

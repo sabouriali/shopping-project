@@ -16,7 +16,7 @@ function Footer() {
   }
 
   return (
-    <footer className="px-4">
+    <footer className="px-4 h-20">
       <ul className="flex items-center gap-8 h-full">
         <li>
           <Link to="#">درباره ما</Link>
@@ -24,7 +24,7 @@ function Footer() {
         <li>
           <button onClick={handleClick}>تماس با ما</button>
           <ul
-            className="bg-white border p-6 rounded-lg absolute transition shadow-lg bottom-14"
+            className="bg-white border p-6 rounded-lg absolute transition shadow-lg bottom-14 text-black"
             style={{
               opacity: clicked ? "1" : "0",
               visibility: clicked ? "visible" : "hidden",

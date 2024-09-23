@@ -55,7 +55,7 @@ function Button({
     <button
       {...props}
       className={`transition ${className}`}
-      style={{ ...checkVariant(variant), ...checkSize(size) }}
+      style={{ ...checkVariant(variant!), ...checkSize(size) }}
     >
       {children}
     </button>

@@ -16,16 +16,27 @@ function Navbar() {
         </Link>
       </li>
       <li>
-        <button onClick={handleClick}>محصولات</button>
+        <button
+          onClick={handleClick}
+          className={`px-2.5 py-1.5 hover:text-white hover:bg-[#3498db] rounded-lg ${
+            clicked && "bg-[#3498db] text-white dark:bg-[#34495e]"
+          } hover:shadow-md transition dark:hover:bg-[#34495e]`}
+        >
+          محصولات
+        </button>
         <ul
-          className="bg-white border p-6 rounded-lg absolute transition shadow-lg"
+          className="bg-white border p-6 rounded-lg absolute transition shadow-lg text-black top-14"
           style={{
             opacity: clicked ? "1" : "0",
             visibility: clicked ? "visible" : "hidden",
-            transform: clicked ? 'translateY(0)' : 'translateY(-1vh)'
+            transform: clicked ? "translateY(0)" : "translateY(-1vh)",
           }}
         >
-          <li>همه محصولات</li>
+          <li>
+            <Link to="/products" onClick={handleClick}>
+              همه محصولات
+            </Link>
+          </li>
           <hr />
           <p>بر‌اساس برند</p>
           <li>اپل</li>
