@@ -6,8 +6,10 @@ type CartState = {
   items: CartItem[];
 };
 
+const localCart = localStorage.getItem("cart");
+
 const initialState: CartState = {
-  items: [],
+  items: localCart ? JSON.parse(localCart) : [],
 };
 
 export const cartSlice = createSlice({
@@ -21,8 +23,10 @@ export const cartSlice = createSlice({
 
       if (itemIndex >= 0) {
         state.items[itemIndex].qty++;
+        localStorage.setItem("cart", JSON.stringify(state.items));
       } else {
         state.items.push({ id: action.payload, qty: 1 });
+        localStorage.setItem("cart", JSON.stringify(state.items));
       }
     },
     deleteItemFromCart(state, action: PayloadAction<number>) {
@@ -31,6 +35,7 @@ export const cartSlice = createSlice({
       );
 
       state.items.splice(itemIndex, 1);
+      localStorage.setItem("cart", JSON.stringify(state.items));
     },
     removeFromCart(state, action: PayloadAction<number>) {
       const itemIndex = state.items.findIndex(
@@ -39,12 +44,15 @@ export const cartSlice = createSlice({
 
       if (state.items[itemIndex].qty === 1) {
         state.items.splice(itemIndex, 1);
+        localStorage.setItem("cart", JSON.stringify(state.items));
       } else {
         state.items[itemIndex].qty--;
+        localStorage.setItem("cart", JSON.stringify(state.items));
       }
     },
     clearCart(state) {
       state.items = [];
+      localStorage.setItem("cart", JSON.stringify(state.items));
     },
   },
 });
@@ -67,3 +75,5 @@ export function getCartQty(state: CartItem[]) {
 
   return cartQty;
 }
+
+// export function getTotalPrice(state: CartItem[]) {}

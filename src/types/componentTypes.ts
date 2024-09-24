@@ -2,6 +2,8 @@ import { type ComponentProps, type ReactNode } from "react";
 
 export type LayoutProps = {
   children: ReactNode;
+  showCart: boolean;
+  hideCart: () => void;
 };
 
 export type TButtonVariants = "outline" | "solid" | "disabled";
@@ -29,6 +31,26 @@ export type BackdropProps = {
 };
 
 export type LoadingProps = {
-  showBackdrop: boolean;
-  hideBackdrop: () => void;
+  showLoading: boolean;
+  hideLoading: () => void;
+};
+
+export type RightModalProps = {
+  children: ReactNode;
+  showRightModal: boolean;
+  hideRightModal: () => void;
+};
+
+export type HeaderProps = {
+  onCartClick: () => void;
+};
+
+export type CartProps = {
+  closeModal: () => void;
+};
+
+export type CartItemProps = {
+  id: number;
+  qty: number;
+  closeModal: () => void;
 };

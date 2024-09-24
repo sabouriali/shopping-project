@@ -21,10 +21,10 @@ function Footer() {
         <li>
           <Link to="#">درباره ما</Link>
         </li>
-        <li>
+        <li className="relative">
           <button onClick={handleClick}>تماس با ما</button>
           <ul
-            className="bg-white border p-6 rounded-lg absolute transition shadow-lg bottom-14 text-black"
+            className="bg-white border p-6 rounded-lg absolute transition shadow-lg bottom-8 text-black"
             style={{
               opacity: clicked ? "1" : "0",
               visibility: clicked ? "visible" : "hidden",

@@ -28,7 +28,7 @@ function ProductsPage() {
           </div>
         </>
       ) : (
-        <Loading showBackdrop={true} hideBackdrop={() => null} />
+        <Loading showLoading={true} hideLoading={() => null} />
       )}
     </>
   );

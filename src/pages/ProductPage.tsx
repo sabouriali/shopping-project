@@ -5,6 +5,7 @@ import {
   BsCartPlusFill,
   BsDashLg,
   BsPlusLg,
+  BsStarFill,
   BsTrashFill,
 } from "react-icons/bs";
 
@@ -76,9 +77,16 @@ function ProductPage() {
             <div className="md:col-span-7 lg:col-span-8 md:row-span-3 px-4 py-2">
               <div className="mb-2">
                 <h2 className="font-bold">{product?.title}</h2>
-                <p className="text-xs text-gray-400 mb-2">
-                  {product?.category}
-                </p>
+                <p className="text-xs text-gray-400">{product?.category}</p>
+                <div className="mb-2 flex items-center gap-2">
+                  <p className="flex items-center text-sm">
+                    <BsStarFill className="ml-1 text-yellow-400 dark:text-yellow-300" />
+                    {product.rating.rate}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    ({product.rating.count})
+                  </p>
+                </div>
                 <p className="text-red-500">{product?.price}$</p>
               </div>
               <p className="text-justify">{product?.description}</p>
@@ -148,7 +156,7 @@ function ProductPage() {
           </article>
         </>
       ) : (
-        <Loading showBackdrop={true} hideBackdrop={() => null} />
+        <Loading showLoading={true} hideLoading={() => null} />
       )}
     </>
   );
