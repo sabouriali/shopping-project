@@ -15,19 +15,17 @@ import Button from "./UI/Button";
 import { type Product } from "../types/productType";
 import { type CartItemProps } from "../types/componentTypes";
 
-function CartItem({ id, qty, closeModal }: CartItemProps) {
+function CartItem({ id, qty, price, closeModal }: CartItemProps) {
   const [product, setProduct] = useState<Product>();
 
   const dispatch = useCartDispatch();
-
-  const itemTotalPrice = product?.price * qty;
 
   useEffect(() => {
     getSingleProduct(id).then((res) => setProduct(res));
   }, [id]);
 
   function handleIncreaseItem() {
-    dispatch(addToCart(id));
+    dispatch(addToCart({ id, price }));
   }
 
   function handleDecreaseItem() {
@@ -56,7 +54,7 @@ function CartItem({ id, qty, closeModal }: CartItemProps) {
         </Link>
       </td>
       <td className="text-center p-2">x{qty}</td>
-      <td className="text-left p-2 text-red-500">{itemTotalPrice}$</td>
+      <td className="text-left p-2 text-red-500">{price * qty}$</td>
       <td className="text-right p-2 w-14">
         <div className="flex items-center justify-between gap-1 mb-1">
           <Button

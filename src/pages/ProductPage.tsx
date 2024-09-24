@@ -40,7 +40,7 @@ function ProductPage() {
   const productQty = getProductQty(cart, JSON.parse(id!));
 
   function handleAddToCart() {
-    dispatch(addToCart(JSON.parse(id!)));
+    dispatch(addToCart({ id: product!.id, price: product!.price }));
   }
 
   function handleRemoveFromCart() {

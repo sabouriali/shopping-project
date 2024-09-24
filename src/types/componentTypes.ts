@@ -52,5 +52,6 @@ export type CartProps = {
 export type CartItemProps = {
   id: number;
   qty: number;
+  price: number;
   closeModal: () => void;
 };

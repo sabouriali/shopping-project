@@ -16,16 +16,20 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<number>) {
+    addToCart(state, action: PayloadAction<{ id: number; price: number }>) {
       const itemIndex = state.items.findIndex(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload.id
       );
 
       if (itemIndex >= 0) {
         state.items[itemIndex].qty++;
         localStorage.setItem("cart", JSON.stringify(state.items));
       } else {
-        state.items.push({ id: action.payload, qty: 1 });
+        state.items.push({
+          id: action.payload.id,
+          price: action.payload.price,
+          qty: 1,
+        });
         localStorage.setItem("cart", JSON.stringify(state.items));
       }
     },
@@ -76,4 +80,8 @@ export function getCartQty(state: CartItem[]) {
   return cartQty;
 }
 
-// export function getTotalPrice(state: CartItem[]) {}
+export function getTotalPrice(state: CartItem[]) {
+  const totalPrice = state.reduce((acc, cur) => acc + cur.price * cur.qty, 0);
+
+  return totalPrice;
+}
