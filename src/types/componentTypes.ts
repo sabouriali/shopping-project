@@ -1,4 +1,5 @@
 import { type ComponentProps, type ReactNode } from "react";
+import { type Rating } from "./productType";
 
 export type LayoutProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ export type ProductItemProps = {
   title: string;
   price: number;
   description: string;
+  rating: Rating;
 };
 
 export type BackdropProps = {

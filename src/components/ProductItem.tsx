@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BsStarFill } from "react-icons/bs";
 
 import { ProductItemProps } from "../types/componentTypes";
 
@@ -8,6 +9,7 @@ function ProductItem({
   title,
   price,
   description,
+  rating,
 }: ProductItemProps) {
   return (
     <Link
@@ -17,9 +19,15 @@ function ProductItem({
       <div className="row-span-3 border-b">
         <img src={image} alt={title} className="rounded-t-2xl" />
       </div>
-      <div className="row-span-1 flex items-center justify-between gap-6 px-4">
-        <h3 className="font-bold line-clamp-1">{title}</h3>
-        <h4 className="text-red-500">{price}$</h4>
+      <div className="row-span-1 mt-2">
+        <p className="flex text-sm px-4">
+          <BsStarFill className="ml-1 text-yellow-400 dark:text-yellow-300" />
+          {rating.rate}
+        </p>
+        <div className="flex items-center justify-between gap-6 px-4">
+          <h3 className="font-bold line-clamp-1">{title}</h3>
+          <h4 className="text-red-500">{price}$</h4>
+        </div>
       </div>
       <div className="row-span-1">
         <p className="text-justify px-4 line-clamp-5 sm:line-clamp-3 text-gray-500 dark:text-gray-300">
