@@ -11,7 +11,7 @@ function ProductItem({
 }: ProductItemProps) {
   return (
     <Link
-      to={JSON.stringify(id)}
+      to={`/products/${id}`}
       className="grid grid-rows-5 rounded-2xl shadow-md hover:shadow-xl transition text-sm bg-white dark:bg-[#424242]"
     >
       <div className="row-span-3 border-b">

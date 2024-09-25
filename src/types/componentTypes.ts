@@ -2,8 +2,6 @@ import { type ComponentProps, type ReactNode } from "react";
 
 export type LayoutProps = {
   children: ReactNode;
-  showCart: boolean;
-  hideCart: () => void;
 };
 
 export type TButtonVariants = "outline" | "solid" | "disabled";

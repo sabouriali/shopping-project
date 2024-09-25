@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import SingleCatProductsPage from "./pages/SingleCatProductsPage";
 import ProductPage from "./pages/ProductPage";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products">
             <Route index element={<ProductsPage />} />
+            <Route path={`category/:cat`} element={<SingleCatProductsPage />} />
             <Route path=":id" element={<ProductPage />} />
           </Route>
         </Routes>
