@@ -56,12 +56,6 @@ function Header({ onCartClick }: HeaderProps) {
             </span>
           )}
         </button>
-        <input
-          dir="rtl"
-          type="text"
-          placeholder="دنبال چی می‌گردی؟..."
-          className="border text-sm px-3 py-1 rounded-lg outline-none dark:bg-[#34495e] transition focus:border-[#3498db]"
-        />
       </div>
       <nav>
         <Navbar />

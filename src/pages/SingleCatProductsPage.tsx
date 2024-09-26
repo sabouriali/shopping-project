@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { BsSortNumericDownAlt, BsSortNumericDown } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 
 import { getSingleCatProducts } from "../utility/api";
 
 import ProductItem from "../components/ProductItem";
+import Loading from "../components/UI/Loading";
+import Button from "../components/UI/Button";
 
 import { type Product } from "../types/productType";
-import Loading from "../components/UI/Loading";
 
 function SingleCatProductsPage() {
   const [products, setProducts] = useState<Product[]>();
 
   const { cat } = useParams<{ cat: string }>();
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function getSelectedProducts() {
@@ -26,14 +25,28 @@ function SingleCatProductsPage() {
 
   function handleSortDesc() {
     setProducts([]);
-    navigate("?sort=desc");
     getSingleCatProducts(cat!, "desc").then((res) => setProducts(res));
   }
 
   function handleSortAsc() {
     setProducts([]);
-    navigate("?sort=asc");
     getSingleCatProducts(cat!, "asc").then((res) => setProducts(res));
+  }
+
+  function handleSortPrice(sort?: "asc" | "desc") {
+    setProducts([]);
+    const sortedProducts = [...products].sort((a, b) =>
+      sort === "asc" ? a.price - b.price : b.price - a.price
+    );
+    setProducts(sortedProducts);
+  }
+
+  function handleSortRate() {
+    setProducts([]);
+    const sortedProducts = [...products].sort(
+      (a, b) => b.rating.rate - a.rating.rate
+    );
+    setProducts(sortedProducts);
   }
 
   return (
@@ -42,21 +55,44 @@ function SingleCatProductsPage() {
         <>
           <div className="mb-4">
             <h2 className="text-lg font-bold mb-4">محصولات: {cat}</h2>
-            <div className="flex items-center text-sm">
+            <div className="flex items-center text-xs">
               <p className="ml-2">مرتب سازی:</p>
-              <div>
-                <button
-                  onClick={handleSortDesc}
-                  className="p-2 rounded-full hover:bg-[#3498db] hover:shadow-md hover:text-white dark:hover:bg-[#34495e] transition"
-                >
-                  <BsSortNumericDownAlt />
-                </button>
-                <button
+              <div className="flex items-center gap-1">
+                <Button
+                  size="md"
                   onClick={handleSortAsc}
-                  className="p-2 rounded-full hover:bg-[#3498db] hover:shadow-md hover:text-white dark:hover:bg-[#34495e] transition"
+                  className="hover:bg-[#3498db] hover:text-white dark:hover:bg-[#34495e]"
                 >
-                  <BsSortNumericDown />
-                </button>
+                  پیش‌فرض
+                </Button>
+                <Button
+                  size="md"
+                  onClick={handleSortDesc}
+                  className="hover:bg-[#3498db] hover:text-white dark:hover:bg-[#34495e]"
+                >
+                  جدیدترین
+                </Button>
+                <Button
+                  size="md"
+                  onClick={() => handleSortPrice("asc")}
+                  className="hover:bg-[#3498db] hover:text-white dark:hover:bg-[#34495e]"
+                >
+                  ارزان‌ترین
+                </Button>
+                <Button
+                  size="md"
+                  onClick={() => handleSortPrice("desc")}
+                  className="hover:bg-[#3498db] hover:text-white dark:hover:bg-[#34495e]"
+                >
+                  گران‌ترین
+                </Button>
+                <Button
+                  size="md"
+                  onClick={handleSortRate}
+                  className="hover:bg-[#3498db] hover:text-white dark:hover:bg-[#34495e]"
+                >
+                  پیشنهاد خریداران
+                </Button>
               </div>
             </div>
           </div>
