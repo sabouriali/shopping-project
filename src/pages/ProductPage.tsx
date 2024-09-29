@@ -9,7 +9,9 @@ import {
   BsTrashFill,
 } from "react-icons/bs";
 
-import { useCartDispatch, useCartSelector } from "../hooks/useCart";
+import { getSingleProduct } from "../utility/api";
+
+import { useStoreDispatch, useStoreSelector } from "../hooks/useStore";
 
 import {
   addToCart,
@@ -17,12 +19,11 @@ import {
   removeFromCart,
   getProductQty,
 } from "../redux/slices/cart-slice";
-import { getSingleProduct } from "../utility/api";
 
 import Button from "../components/UI/Button";
+import Loading from "../components/UI/Loading";
 
 import { type Product } from "../types/productType";
-import Loading from "../components/UI/Loading";
 
 function ProductPage() {
   const [product, setProduct] = useState<Product>();
@@ -30,8 +31,8 @@ function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const cart = useCartSelector((state) => state.cart.items);
-  const dispatch = useCartDispatch();
+  const cart = useStoreSelector((state) => state.cart.items);
+  const dispatch = useStoreDispatch();
 
   useEffect(() => {
     getSingleProduct(JSON.parse(id!)).then((res) => setProduct(res));

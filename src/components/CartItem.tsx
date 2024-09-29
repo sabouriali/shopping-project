@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BsDash, BsPlus, BsTrashFill } from "react-icons/bs";
 
 import { getSingleProduct } from "../utility/api";
-import { useCartDispatch } from "../hooks/useCart";
+import { useStoreDispatch } from "../hooks/useStore";
 import {
   addToCart,
   deleteItemFromCart,
@@ -18,7 +18,7 @@ import { type CartItemProps } from "../types/componentTypes";
 function CartItem({ id, qty, price, closeModal }: CartItemProps) {
   const [product, setProduct] = useState<Product>();
 
-  const dispatch = useCartDispatch();
+  const dispatch = useStoreDispatch();
 
   useEffect(() => {
     getSingleProduct(id).then((res) => setProduct(res));

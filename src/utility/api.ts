@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { type Product } from "../types/productType";
+import { type CartItem, type Product } from "../types/productType";
 
 type ProductsData = {
   data: Product[];
@@ -12,6 +12,10 @@ type SingleProductData = {
 
 type CategoriesData = {
   data: string[];
+};
+
+type loginData = {
+  data: { token: string };
 };
 
 const Axios = axios.create({
@@ -42,6 +46,27 @@ export async function getSingleCatProducts(cat: string, sort?: "asc" | "desc") {
 
 export async function getProductCategories() {
   const { data }: CategoriesData = await Axios.get("/products/categories");
+
+  return data;
+}
+
+export async function sendCart(userId: number, cart: CartItem[]) {
+  await Axios.post("/carts", { userId, cart });
+}
+
+export async function loginHandler(username: string, password: string) {
+  const { data }: loginData = await Axios.post(
+    "/auth/login",
+    {
+      username,
+      password,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   return data;
 }

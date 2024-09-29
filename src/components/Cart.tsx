@@ -1,6 +1,6 @@
 import { BsCartCheckFill, BsCartXFill } from "react-icons/bs";
 
-import { useCartDispatch, useCartSelector } from "../hooks/useCart";
+import { useStoreDispatch, useStoreSelector } from "../hooks/useStore";
 
 import { clearCart, getTotalPrice } from "../redux/slices/cart-slice";
 
@@ -10,9 +10,9 @@ import CartItem from "./CartItem";
 import { type CartProps } from "../types/componentTypes";
 
 function Cart({ closeModal }: CartProps) {
-  const cart = useCartSelector((state) => state.cart.items);
+  const cart = useStoreSelector((state) => state.cart.items);
   const totalPrice = getTotalPrice(cart);
-  const dispatch = useCartDispatch();
+  const dispatch = useStoreDispatch();
 
   function handleClearCart() {
     dispatch(clearCart());

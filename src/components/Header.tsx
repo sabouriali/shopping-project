@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   BsCartFill,
   BsMoonFill,
@@ -5,25 +7,43 @@ import {
   BsSunFill,
 } from "react-icons/bs";
 
-import { useThemeDispatch, useThemeSelector } from "../hooks/useTheme";
-import { useCartSelector } from "../hooks/useCart";
+import { useStoreDispatch, useStoreSelector } from "../hooks/useStore";
 
 import { switchTheme } from "../redux/slices/theme-slice";
 import { getCartQty } from "../redux/slices/cart-slice";
+import { setLogout } from "../redux/slices/login-slice";
 
 import Navbar from "./Navbar";
 
 import { type HeaderProps } from "../types/componentTypes";
 
 function Header({ onCartClick }: HeaderProps) {
-  const theme = useThemeSelector((state) => state.theme.value);
-  const dispatch = useThemeDispatch();
+  const [clicked, setClicked] = useState(false);
 
-  const cart = useCartSelector((state) => state.cart.items);
+  const navigate = useNavigate();
+
+  const theme = useStoreSelector((state) => state.theme.value);
+  const cart = useStoreSelector((state) => state.cart.items);
+  const isLogin = useStoreSelector((state) => state.login.isLogin);
+
+  const dispatch = useStoreDispatch();
+
   const cartQty = getCartQty(cart);
 
   function handleSwitchTheme() {
     dispatch(switchTheme());
+  }
+
+  function handleClick() {
+    setClicked(!clicked);
+  }
+
+  function handleLogout() {
+    dispatch(setLogout());
+
+    handleClick();
+
+    navigate("/login");
   }
 
   return (
@@ -42,9 +62,57 @@ function Header({ onCartClick }: HeaderProps) {
             <BsMoonFill size={20} />
           )}
         </button>
-        <button className="p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full">
+        <button
+          onClick={handleClick}
+          className="p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full"
+        >
           <BsPersonFill size={20} />
         </button>
+        <div
+          dir="rtl"
+          className="bg-white border p-6 rounded-lg absolute transition shadow-lg text-black top-14"
+          style={{
+            opacity: clicked ? "1" : "0",
+            visibility: clicked ? "visible" : "hidden",
+            transform: clicked ? "translateY(0)" : "translateY(-1vh)",
+          }}
+        >
+          {isLogin ? (
+            <ul>
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+                <Link to="/user" onClick={handleClick} className="block w-full">
+                  حساب کاربری
+                </Link>
+              </li>
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+                <button onClick={handleLogout} className="w-full text-right">
+                  خروج
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+                <Link
+                  to="/login"
+                  onClick={handleClick}
+                  className="block w-full"
+                >
+                  ورود
+                </Link>
+              </li>
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+                <Link
+                  to="/signup"
+                  onClick={handleClick}
+                  className="block w-full"
+                >
+                  ثبت نام
+                </Link>
+              </li>
+            </ul>
+          )}
+        </div>
         <button
           onClick={onCartClick}
           className="relative p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full flex items-center"

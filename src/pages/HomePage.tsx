@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
+import { BsEmojiFrownFill } from "react-icons/bs";
 
 import { getProducts } from "../utility/api";
 
-import { type Product } from "../types/productType";
 import ProductItem from "../components/ProductItem";
 import Loading from "../components/UI/Loading";
-import { BsEmojiFrownFill } from "react-icons/bs";
+
+import { type Product } from "../types/productType";
 
 function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);

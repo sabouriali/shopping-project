@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useThemeSelector } from "../hooks/useTheme";
+import { useStoreSelector } from "../hooks/useStore";
 
 import RightModal from "./UI/RightModal";
 import Cart from "./Cart";
@@ -12,7 +12,7 @@ import { type LayoutProps } from "../types/componentTypes";
 function Layout({ children }: LayoutProps) {
   const [showCart, setShowCart] = useState(false);
 
-  const theme = useThemeSelector((state) => state.theme.value);
+  const theme = useStoreSelector((state) => state.theme.value);
 
   const htmlEl = document.querySelector("html");
 
