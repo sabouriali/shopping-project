@@ -17,12 +17,10 @@ export type Name = {
 };
 
 export type User = {
-  address: Address;
-  id: number;
   email: string;
   username: string;
   password: string;
   name: Name;
+  address: Address;
   phone: string;
-  __v: number;
 };

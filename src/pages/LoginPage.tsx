@@ -42,11 +42,11 @@ function LoginPage() {
 
   return (
     <>
-      <Loading showLoading={isLoading} hideLoading={() => null} />
+      {isLoading && <Loading showLoading={true} hideLoading={() => null} />}
       <h2 className="text-xl font-bold mb-4">ورود</h2>
       <form
         onSubmit={handleSubmit}
-        className="w-full md:w-4/5 lg:w-3/5 xl:w-1/2 2xl:w-2/5 p-6 bg-white rounded-2xl shadow-lg mx-auto"
+        className="w-full md:w-4/5 lg:w-3/5 xl:w-1/2 2xl:w-2/5 p-6 bg-white rounded-2xl shadow-lg mx-auto transition dark:bg-[#424242]"
       >
         <div className="w-full flex items-center justify-between mb-4">
           <input
@@ -54,14 +54,14 @@ function LoginPage() {
             id="username"
             ref={usernameRef}
             placeholder="نام کاربری..."
-            className="bg-white px-3 py-2 border rounded-lg focus:shadow-lg transition focus:border-[#3498db] outline-none w-5/12"
+            className="px-3 py-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="password"
             id="password"
             ref={passwordRef}
             placeholder="رمز عبور..."
-            className="bg-white px-3 py-2 border rounded-lg focus:shadow-lg transition focus:border-[#3498db] outline-none w-5/12"
+            className="px-3 py-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
         </div>
         <div className="flex items-center mb-4">
@@ -69,14 +69,11 @@ function LoginPage() {
             onChange={handleCheck}
             checked={checked}
             type="checkbox"
-            id="userAgreement"
+            id="rememberMe"
             className="ml-1 w-4 h-4"
           />
-          <label htmlFor="userAgreement">
-            <Link to="/user-agreement" className="text-[#3498db]">
-              قوانین و شرایط
-            </Link>{" "}
-            را می‌پذیرم.
+          <label htmlFor="rememberMe">
+            مرا به خاطر بسپار
           </label>
         </div>
         <div>

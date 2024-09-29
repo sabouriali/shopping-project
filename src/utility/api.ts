@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { type CartItem, type Product } from "../types/productType";
+import { type User } from "../types/userType";
 
 type ProductsData = {
   data: Product[];
@@ -60,6 +61,52 @@ export async function loginHandler(username: string, password: string) {
     {
       username,
       password,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return data;
+}
+
+export async function signupHandler({
+  email,
+  username,
+  password,
+  name: { firstname, lastname },
+  address: {
+    city,
+    street,
+    number,
+    zipcode,
+    geolocation: { lat, long },
+  },
+  phone,
+}: User) {
+  const { data } = await Axios.post(
+    "/users",
+    {
+      email,
+      username,
+      password,
+      name: {
+        firstname,
+        lastname,
+      },
+      address: {
+        city,
+        street,
+        number,
+        zipcode,
+        geolocation: {
+          lat,
+          long,
+        },
+      },
+      phone,
     },
     {
       headers: {
