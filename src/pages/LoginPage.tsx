@@ -32,11 +32,12 @@ function LoginPage() {
       .then((res) => {
         setIsLoading(false);
         sessionStorage.setItem("token", res.token);
+        sessionStorage.setItem("user", usernameRef.current?.value);
         dispatch(setLogin());
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err.response.data);
+        alert(err.response.data);
       });
   }
 
@@ -72,9 +73,7 @@ function LoginPage() {
             id="rememberMe"
             className="ml-1 w-4 h-4"
           />
-          <label htmlFor="rememberMe">
-            مرا به خاطر بسپار
-          </label>
+          <label htmlFor="rememberMe">مرا به خاطر بسپار</label>
         </div>
         <div>
           {checked &&

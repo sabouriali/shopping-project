@@ -1,11 +1,17 @@
 import { type FormEvent, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { signupHandler } from "../utility/api";
 
 import Button from "../components/UI/Button";
-import { signupHandler } from "../utility/api";
+import Loading from "../components/UI/Loading";
 
 function SignupPage() {
   const [checked, setChecked] = useState(false);
   const [checkedForm, setCheckedForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
@@ -71,11 +77,24 @@ function SignupPage() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    signupHandler(userInfo).then((res) => console.log(res));
+    setIsLoading(true);
+
+    signupHandler(userInfo)
+      .then((res) => {
+        setIsLoading(false);
+        console.log(res);
+        alert("ثبت نام موفق");
+        navigate("/login");
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+      });
   }
 
   return (
     <>
+      {isLoading && <Loading showLoading={true} hideLoading={() => null} />}
       <h2 className="text-xl font-bold mb-4">ثبت نام</h2>
       <form
         onSubmit={handleSubmit}

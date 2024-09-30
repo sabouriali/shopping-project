@@ -1,23 +1,15 @@
 import axios from "axios";
 
-import { type CartItem, type Product } from "../types/productType";
+import { type CartItem } from "../types/productType";
 import { type User } from "../types/userType";
-
-type ProductsData = {
-  data: Product[];
-};
-
-type SingleProductData = {
-  data: Product;
-};
-
-type CategoriesData = {
-  data: string[];
-};
-
-type loginData = {
-  data: { token: string };
-};
+import {
+  type CategoriesData,
+  type CheckoutData,
+  type LoginData,
+  type ProductsData,
+  type SignupData,
+  type SingleProductData,
+} from "../types/dataTypes";
 
 const Axios = axios.create({
   baseURL: "https://fakestoreapi.com",
@@ -51,12 +43,26 @@ export async function getProductCategories() {
   return data;
 }
 
-export async function sendCart(userId: number, cart: CartItem[]) {
-  await Axios.post("/carts", { userId, cart });
+export async function checkoutHandler(userId: string, products: CartItem[]) {
+  const { data }: CheckoutData = await Axios.post(
+    "/carts",
+    {
+      userId,
+      date: Date.now,
+      products,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return data;
 }
 
 export async function loginHandler(username: string, password: string) {
-  const { data }: loginData = await Axios.post(
+  const { data }: LoginData = await Axios.post(
     "/auth/login",
     {
       username,
@@ -86,7 +92,7 @@ export async function signupHandler({
   },
   phone,
 }: User) {
-  const { data } = await Axios.post(
+  const { data }: SignupData = await Axios.post(
     "/users",
     {
       email,
