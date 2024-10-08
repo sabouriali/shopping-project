@@ -16,7 +16,7 @@ function ProductItem({
       to={`/products/${id}`}
       className="grid grid-rows-5 rounded-2xl shadow-md hover:shadow-xl transition text-sm bg-white dark:bg-[#424242]"
     >
-      <div className="row-span-3 border-b flex items-center bg-white rounded-t-2xl">
+      <div className="row-span-3 border-b flex items-center justify-center bg-white rounded-t-2xl">
         <img src={image} alt={title} className="rounded-2xl" />
       </div>
       <div className="row-span-1 mt-2">

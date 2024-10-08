@@ -37,7 +37,7 @@ function HomePage() {
               placeholder="دنبال چی می‌گردی؟..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-1/3 px-4 py-2 rounded-lg text-sm outline-none bg-white shadow-md transition focus:shadow-lg dark:bg-[#2c3e50] dark:placeholder:text-gray-300"
+              className="w-3/4 sm:w-1/2 lg:w-1/3 px-4 py-2 rounded-lg text-sm outline-none bg-white shadow-md transition focus:shadow-lg dark:bg-[#2c3e50] dark:placeholder:text-gray-300"
             />
           </div>
           {searchResult.length === 0 ? (

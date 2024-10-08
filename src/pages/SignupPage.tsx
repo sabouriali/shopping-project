@@ -28,24 +28,30 @@ function SignupPage() {
   const phoneNumberRef = useRef<HTMLInputElement>(null);
 
   const userInfo = {
-    email: emailRef.current!.value,
-    username: usernameRef.current!.value,
-    password: passwordRef.current!.value,
+    email: emailRef.current?.value ? emailRef.current!.value : "test",
+    username: usernameRef.current?.value ? usernameRef.current!.value : "test",
+    password: passwordRef.current?.value ? passwordRef.current!.value : "test",
     name: {
-      firstname: firstNameRef.current!.value,
-      lastname: lastNameRef.current!.value,
+      firstname: firstNameRef.current?.value
+        ? firstNameRef.current!.value
+        : "test",
+      lastname: lastNameRef.current?.value
+        ? lastNameRef.current!.value
+        : "test",
     },
     address: {
-      city: cityRef.current!.value,
-      street: streetRef.current!.value,
-      number: numberRef.current!.value,
-      zipcode: zipCodeRef.current!.value,
+      city: cityRef.current?.value ? cityRef.current!.value : "test",
+      street: streetRef.current?.value ? streetRef.current!.value : "test",
+      number: numberRef.current?.value ? numberRef.current!.value : "test",
+      zipcode: zipCodeRef.current?.value ? zipCodeRef.current!.value : "test",
       geolocation: {
-        lat: latRef.current!.value,
-        long: longRef.current!.value,
+        lat: latRef.current?.value ? latRef.current!.value : "test",
+        long: longRef.current?.value ? longRef.current!.value : "test",
       },
     },
-    phone: phoneNumberRef.current!.value,
+    phone: phoneNumberRef.current?.value
+      ? phoneNumberRef.current!.value
+      : "test",
   };
 
   function handleCheck() {
