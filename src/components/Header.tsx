@@ -71,7 +71,9 @@ function Header({ onCartClick }: HeaderProps) {
           </button>
           <button
             onClick={handleClick}
-            className="p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] hover:bg-[#3498db] transition rounded-full"
+            className={`p-3 hover:shadow-md hover:text-white hover:dark:bg-[#34495e] ${
+              clicked && "bg-[#3498db] text-white dark:bg-[#34495e]"
+            } hover:bg-[#3498db] transition rounded-full`}
           >
             <BsPersonFill size={20} />
           </button>
