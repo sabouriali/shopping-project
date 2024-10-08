@@ -28,11 +28,11 @@ function LoginPage() {
 
     setIsLoading(true);
 
-    loginHandler(usernameRef.current?.value, passwordRef.current?.value)
+    loginHandler(usernameRef.current!.value, passwordRef.current!.value)
       .then((res) => {
         setIsLoading(false);
         sessionStorage.setItem("token", res.token);
-        sessionStorage.setItem("user", usernameRef.current?.value);
+        sessionStorage.setItem("user", usernameRef.current!.value);
         dispatch(setLogin());
       })
       .catch((err) => {

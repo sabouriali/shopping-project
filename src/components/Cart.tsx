@@ -32,7 +32,7 @@ function Cart({ closeModal }: CartProps) {
   function handleCheckout() {
     closeModal();
     setIsLoading(true);
-    checkoutHandler(user, cart)
+    checkoutHandler(user!, cart)
       .then((res) => {
         setIsLoading(false);
         console.log(res);

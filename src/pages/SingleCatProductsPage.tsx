@@ -35,7 +35,7 @@ function SingleCatProductsPage() {
 
   function handleSortPrice(sort?: "asc" | "desc") {
     setProducts([]);
-    const sortedProducts = [...products].sort((a, b) =>
+    const sortedProducts = [...products!].sort((a, b) =>
       sort === "asc" ? a.price - b.price : b.price - a.price
     );
     setProducts(sortedProducts);
@@ -43,7 +43,7 @@ function SingleCatProductsPage() {
 
   function handleSortRate() {
     setProducts([]);
-    const sortedProducts = [...products].sort(
+    const sortedProducts = [...products!].sort(
       (a, b) => b.rating.rate - a.rating.rate
     );
     setProducts(sortedProducts);
@@ -51,7 +51,7 @@ function SingleCatProductsPage() {
 
   return (
     <>
-      {products?.length > 0 ? (
+      {products !== undefined && products.length > 0 ? (
         <>
           <div className="mb-4">
             <h2 className="text-lg font-bold mb-4">محصولات: {cat}</h2>

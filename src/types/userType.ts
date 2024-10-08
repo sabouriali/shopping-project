@@ -7,7 +7,7 @@ export type Address = {
   geolocation: Geolocation;
   city: string;
   street: string;
-  number: number;
+  number: number | string;
   zipcode: string;
 };
 
