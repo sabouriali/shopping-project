@@ -112,91 +112,91 @@ function SignupPage() {
             id="firstname"
             ref={firstNameRef}
             placeholder="نام..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="lastname"
             ref={lastNameRef}
             placeholder="نام خانوادگی..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="email"
             ref={emailRef}
             placeholder="ایمیل..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="username"
             ref={usernameRef}
             placeholder="نام کاربری..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="password"
             id="password"
             ref={passwordRef}
             placeholder="رمز..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="password"
             id="password2"
             ref={password2Ref}
             placeholder="تکرار رمز..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="city"
             ref={cityRef}
             placeholder="شهر..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="street"
             ref={streetRef}
             placeholder="خیابان..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="number"
             ref={numberRef}
             placeholder="پلاک..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="zipcode"
             ref={zipCodeRef}
             placeholder="کد پستی..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="lat"
             ref={latRef}
             placeholder="طول..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="long"
             ref={longRef}
             placeholder="عرض..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="text"
             id="phone"
             ref={phoneNumberRef}
             placeholder="شماره تماس..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
         </div>
         <div className="flex items-center mb-4">

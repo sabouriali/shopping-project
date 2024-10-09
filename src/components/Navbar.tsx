@@ -52,14 +52,14 @@ function Navbar() {
               <BsList size={20} />
             </button>
             <ul
-              className="absolute transition bg-white text-black w-screen shadow-lg z-20 top-14 right-0 p-6 border-b"
+              className="absolute transition bg-white w-screen shadow-lg z-20 top-14 right-0 p-6 border-b dark:bg-[#2c3e50]"
               style={{
                 opacity: listDropped ? "1" : "0",
                 visibility: listDropped ? "visible" : "hidden",
                 transform: listDropped ? "translateY(0)" : "translateY(-1vh)",
               }}
             >
-              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100 hover:dark:bg-[#34495e]">
                 <Link
                   to="/products"
                   onClick={handleListDrop}
@@ -68,7 +68,7 @@ function Navbar() {
                   همه محصولات
                 </Link>
               </li>
-              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100">
+              <li className="mb-1 px-2 py-1 rounded-lg transition hover:bg-gray-100 hover:dark:bg-[#34495e]">
                 <button
                   onClick={handleClick}
                   className="block w-full text-right"

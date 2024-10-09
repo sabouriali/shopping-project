@@ -49,20 +49,20 @@ function LoginPage() {
         onSubmit={handleSubmit}
         className="w-full md:w-4/5 lg:w-3/5 xl:w-1/2 2xl:w-2/5 p-6 bg-white rounded-2xl shadow-lg mx-auto transition dark:bg-[#424242]"
       >
-        <div className="w-full flex items-center justify-between mb-4">
+        <div className="w-full mb-4">
           <input
             type="text"
             id="username"
             ref={usernameRef}
             placeholder="نام کاربری..."
-            className="px-3 py-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-4 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
           <input
             type="password"
             id="password"
             ref={passwordRef}
             placeholder="رمز عبور..."
-            className="px-3 py-2 border rounded-lg transition focus:border-[#3498db] outline-none w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
+            className="px-3 py-2 mb-4 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
         </div>
         <div className="flex items-center mb-4">
