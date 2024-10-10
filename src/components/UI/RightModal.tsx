@@ -18,7 +18,10 @@ function RightModal({
         }}
       >
         <div className="text-left">
-          <button onClick={hideRightModal}>
+          <button
+            onClick={hideRightModal}
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 p-2 rounded-full transition"
+          >
             <BsXLg />
           </button>
         </div>
