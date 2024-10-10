@@ -1,5 +1,6 @@
 import { type FormEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 import { loginHandler } from "../utility/api";
 
@@ -13,6 +14,7 @@ import Loading from "../components/UI/Loading";
 function LoginPage() {
   const [checked, setChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputType, setInputType] = useState("password");
 
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -41,6 +43,14 @@ function LoginPage() {
       });
   }
 
+  function handleShowPass() {
+    if (inputType === "password") {
+      setInputType("text");
+    } else {
+      setInputType("password");
+    }
+  }
+
   return (
     <>
       {isLoading && <Loading showLoading={true} hideLoading={() => null} />}
@@ -57,13 +67,22 @@ function LoginPage() {
             placeholder="نام کاربری..."
             className="px-3 py-2 mb-4 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
-          <input
-            type="password"
-            id="password"
-            ref={passwordRef}
-            placeholder="رمز عبور..."
-            className="px-3 py-2 mb-4 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
-          />
+          <div className="relative">
+            <input
+              type={inputType}
+              id="password"
+              ref={passwordRef}
+              placeholder="رمز عبور..."
+              className="px-3 py-2 mb-4 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
+            />
+            <button
+              type="button"
+              onClick={handleShowPass}
+              className="absolute top-1.5 left-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-full transition"
+            >
+              {inputType === "password" ? <BsEyeFill /> : <BsEyeSlashFill />}
+            </button>
+          </div>
         </div>
         <div className="flex items-center mb-4">
           <input

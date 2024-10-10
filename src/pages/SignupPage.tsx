@@ -1,5 +1,6 @@
 import { type FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 import { signupHandler } from "../utility/api";
 
@@ -10,6 +11,7 @@ function SignupPage() {
   const [checked, setChecked] = useState(false);
   const [checkedForm, setCheckedForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputType, setInputType] = useState("password");
 
   const navigate = useNavigate();
 
@@ -98,6 +100,14 @@ function SignupPage() {
       });
   }
 
+  function handleShowPass() {
+    if (inputType === "password") {
+      setInputType("text");
+    } else {
+      setInputType("password");
+    }
+  }
+
   return (
     <>
       {isLoading && <Loading showLoading={true} hideLoading={() => null} />}
@@ -135,15 +145,24 @@ function SignupPage() {
             placeholder="نام کاربری..."
             className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
           />
+          <div className="relative w-full lg:w-5/12">
+            <input
+              type={inputType}
+              id="password"
+              ref={passwordRef}
+              placeholder="رمز..."
+              className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full dark:bg-[#212121] dark:placeholder:text-gray-300"
+            />
+            <button
+              type="button"
+              onClick={handleShowPass}
+              className="absolute transition p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 top-1.5 left-1.5"
+            >
+              {inputType === "password" ? <BsEyeFill /> : <BsEyeSlashFill />}
+            </button>
+          </div>
           <input
-            type="password"
-            id="password"
-            ref={passwordRef}
-            placeholder="رمز..."
-            className="px-3 py-2 mb-2 border rounded-lg transition focus:border-[#3498db] outline-none w-full lg:w-5/12 dark:bg-[#212121] dark:placeholder:text-gray-300"
-          />
-          <input
-            type="password"
+            type={inputType}
             id="password2"
             ref={password2Ref}
             placeholder="تکرار رمز..."
