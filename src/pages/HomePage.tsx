@@ -46,7 +46,7 @@ function HomePage() {
               <BsEmojiFrownFill size={32} className="mx-auto mt-4" />
             </div>
           ) : (
-            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
               {searchResult.map((product) => (
                 <ProductItem key={product.id} {...product} />
               ))}
